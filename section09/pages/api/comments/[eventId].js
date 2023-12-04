@@ -1,10 +1,13 @@
 import { MongoClient } from 'mongodb';
 
+const USERNAME = process.env.DB_USER;
+const PASSWORD = process.env.DB_PASS;
+
 const handler = async (req, res) => {
   const eventId = req.query.eventId;
 
   const client = await MongoClient.connect(
-    'mongodb+srv://admin:KvUTzODahH37Yoxt@nextjs-course.xwyz6pr.mongodb.net/events?retryWrites=true&w=majority'
+    `mongodb+srv://${USERNAME}:${PASSWORD}@nextjs-course.xwyz6pr.mongodb.net/events?retryWrites=true&w=majority`
   );
 
   if (req.method === 'POST') {
